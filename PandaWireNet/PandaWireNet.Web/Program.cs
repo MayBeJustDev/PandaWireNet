@@ -1,6 +1,5 @@
-using PandaWireNet.Shared.Services;
 using PandaWireNet.Web.Components;
-using PandaWireNet.Web.Services;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,8 +7,6 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 
-// Add device-specific services used by the PandaWireNet.Shared project
-builder.Services.AddSingleton<IFormFactor, FormFactor>();
 
 var app = builder.Build();
 
