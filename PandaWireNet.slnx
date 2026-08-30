@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="PandaWireNet/PandaWireNet.Shared/PandaWireNet.Shared.csproj" />
+  <Project Path="PandaWireNet/PandaWireNet.Web/PandaWireNet.Web.csproj" />
+  <Project Path="PandaWireNet/PandaWireNet/PandaWireNet.csproj" />
+</Solution>

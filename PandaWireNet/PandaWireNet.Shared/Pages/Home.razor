@@ -1,0 +1,495 @@
+﻿@page "/"
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>
+        PandaLab
+    </title>
+
+</head>
+<body>
+    <main class="app-shell">
+        <header class="topbar">
+            <div class="brand">
+                <div class="panda-mark">
+                    <span>
+                        ●
+                    </span>
+                    <b>
+                        ●
+                    </b>
+                    <i>
+                        •
+                    </i>
+                    <em>
+                        •
+                    </em>
+                </div>
+                <span>
+                    PandaLab
+                </span>
+            </div>
+            <nav class="main-nav">
+                <button class="nav-active">
+                    Workspace
+                </button>
+                <button>
+                    Explore
+                </button>
+            </nav>
+            <div class="top-actions">
+                <button class="icon-button">
+                    ⌕
+                </button>
+                <button class="invite-button">
+                    Invite
+                </button>
+                <button class="avatar">
+                    MA
+                </button>
+            </div>
+        </header>
+        <div class="workspace">
+            <aside class="sidebar">
+                <div class="sidebar-heading">
+                    <div>
+                        <small>
+                            WORKSPACE
+                        </small>
+                        <strong>
+                            My Workspace
+                        </strong>
+                    </div>
+                    <button>
+                        ＋
+                    </button>
+                </div>
+                <label class="search">
+                    <span>
+                        ⌕
+                    </span>
+                    <input placeholder="Filter collections" />
+                </label>
+                <div class="side-tabs">
+                    <button class="active">
+                        Collections
+                    </button>
+                    <button>
+                        History
+                    </button>
+                </div>
+                <div class="collection">
+                    <div class="collection-title">
+                        <span>
+                            ⌄
+                        </span>
+                        <strong>
+                            🐼 Panda API
+                        </strong>
+                        <button>
+                            •••
+                        </button>
+                    </div>
+                    <button class="request active">
+                        <span class="get">
+                            GET
+                        </span>
+                        <span>
+                            List all pandas
+                        </span>
+                    </button>
+                    <button class="request">
+                        <span class="post">
+                            POST
+                        </span>
+                        <span>
+                            Create panda
+                        </span>
+                    </button>
+                    <button class="request">
+                        <span class="get">
+                            GET
+                        </span>
+                        <span>
+                            Find by ID
+                        </span>
+                    </button>
+                    <button class="request">
+                        <span class="del">
+                            DEL
+                        </span>
+                        <span>
+                            Delete panda
+                        </span>
+                    </button>
+                </div>
+                <button class="new-collection">
+                    ＋ New collection
+                </button>
+            </aside>
+            <section class="content">
+                <div class="request-tabbar">
+                    <div class="request-file">
+                        <span class="get">
+                            GET
+                        </span>
+                        List all pandas
+                        <i>
+                            ×
+                        </i>
+                    </div>
+                    <button>
+                        ＋
+                    </button>
+                    <span class="environment">
+                        No environment⌄
+                    </span>
+                </div>
+                <div class="request-area">
+                    <div class="request-title">
+                        <div>
+                            <h1>
+                                List all pandas
+                            </h1>
+                            <p>
+                                Panda API / List all pandas
+                            </p>
+                        </div>
+                        <button>
+                            ⋮
+                        </button>
+                    </div>
+                    <div class="url-row">
+                        <select class="method get" id="method">
+                            <option>
+                                GET
+                            </option>
+                            <option>
+                                POST
+                            </option>
+                            <option>
+                                PUT
+                            </option>
+                            <option>
+                                PATCH
+                            </option>
+                            <option>
+                                DELETE
+                            </option>
+                        </select>
+                        <input aria-label="Request URL" value="https://api.pandalab.dev/v1/pandas" />
+                        <button class="send-button" id="sendButton">
+                            Send
+                            <span>
+                                ⌄
+                            </span>
+                        </button>
+                        <button class="save-button">
+                            Save
+                        </button>
+                    </div>
+                    <div class="tabs">
+                        <button class="active">
+                            Params
+                        </button>
+                        <button>
+                            Authorization
+                        </button>
+                        <button>
+                            Headers (8)
+                        </button>
+                        <button>
+                            Body
+                        </button>
+                        <button>
+                            Scripts
+                        </button>
+                        <button>
+                            Settings
+                        </button>
+                    </div>
+                    <div class="params-panel">
+                        <div class="panel-toolbar">
+                            <strong>
+                                Query Params
+                            </strong>
+                            <div>
+                                <button>
+                                    Bulk Edit
+                                </button>
+                                <button>
+                                    •••
+                                </button>
+                            </div>
+                        </div>
+                        <div class="param-table">
+                            <div class="table-head">
+                                <span>
+                                </span>
+                                <span>
+                                    KEY
+                                </span>
+                                <span>
+                                    VALUE
+                                </span>
+                                <span>
+                                    DESCRIPTION
+                                </span>
+                            </div>
+                            <div class="table-row">
+                                <span>
+                                    <input type="checkbox" />
+                                </span>
+                                <span>
+                                    limit
+                                </span>
+                                <span>
+                                    10
+                                </span>
+                                <span>
+                                    Number of results
+                                </span>
+                            </div>
+                            <div class="table-row muted">
+                                <span>
+                                    <input type="checkbox" />
+                                </span>
+                                <span>
+                                    Key
+                                </span>
+                                <span>
+                                    Value
+                                </span>
+                                <span>
+                                    Description
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="response-area">
+                    <div class="response-top">
+                        <div>
+                            <button class="active">
+                                Response
+                            </button>
+                            <button>
+                                Console
+                            </button>
+                        </div>
+                        <div class="response-meta">
+                            <span class="success-dot">
+                            </span>
+                            200 OK
+                            <span>
+                                •
+                            </span>
+                            241 ms
+                            <span>
+                                •
+                            </span>
+                            1.42 KB
+                        </div>
+                    </div>
+                    <div class="response-tabs">
+                        <button class="active">
+                            Body
+                        </button>
+                        <button>
+                            Cookies
+                        </button>
+                        <button>
+                            Headers (9)
+                        </button>
+                        <button>
+                            Test Results
+                        </button>
+                        <span>
+                        </span>
+                        <button>
+                            Pretty
+                        </button>
+                        <button>
+                            Raw
+                        </button>
+                        <button>
+                            Preview
+                        </button>
+                        <select>
+                            <option>
+                                JSON
+                            </option>
+                        </select>
+                        <button>
+                            ⎘
+                        </button>
+                    </div>
+                    <div class="code-panel" id="codePanel">
+                        <ol>
+                            <li>
+                                <code>
+                                    {
+                                </code>
+                            </li>
+                            <li>
+                                <code>
+                                    <span class="key">
+                                        "success"
+                                    </span>
+                                    :
+                                    <span class="bool">
+                                        true
+                                    </span>
+                                    ,
+                                </code>
+                            </li>
+                            <li>
+                                <code>
+                                    <span class="key">
+                                        "count"
+                                    </span>
+                                    :
+                                    <span class="number">
+                                        3
+                                    </span>
+                                    ,
+                                </code>
+                            </li>
+                            <li>
+                                <code>
+                                    <span class="key">
+                                        "data"
+                                    </span>
+                                    : [
+                                </code>
+                            </li>
+                            <li>
+                                <code>
+                                    {
+                                    <span class="key">
+                                        "id"
+                                    </span>
+                                    :
+                                    <span class="number">
+                                        1
+                                    </span>
+                                    ,
+                                    <span class="key">
+                                        "name"
+                                    </span>
+                                    :
+                                    <span class="string">
+                                        "Bao"
+                                    </span>
+                                    ,
+                                    <span class="key">
+                                        "species"
+                                    </span>
+                                    :
+                                    <span class="string">
+                                        "Giant Panda"
+                                    </span>
+                                    },
+                                </code>
+                            </li>
+                            <li>
+                                <code>
+                                    {
+                                    <span class="key">
+                                        "id"
+                                    </span>
+                                    :
+                                    <span class="number">
+                                        2
+                                    </span>
+                                    ,
+                                    <span class="key">
+                                        "name"
+                                    </span>
+                                    :
+                                    <span class="string">
+                                        "Mei"
+                                    </span>
+                                    ,
+                                    <span class="key">
+                                        "species"
+                                    </span>
+                                    :
+                                    <span class="string">
+                                        "Giant Panda"
+                                    </span>
+                                    },
+                                </code>
+                            </li>
+                            <li>
+                                <code>
+                                    {
+                                    <span class="key">
+                                        "id"
+                                    </span>
+                                    :
+                                    <span class="number">
+                                        3
+                                    </span>
+                                    ,
+                                    <span class="key">
+                                        "name"
+                                    </span>
+                                    :
+                                    <span class="string">
+                                        "Mochi"
+                                    </span>
+                                    ,
+                                    <span class="key">
+                                        "species"
+                                    </span>
+                                    :
+                                    <span class="string">
+                                        "Red Panda"
+                                    </span>
+                                    }
+                                </code>
+                            </li>
+                            <li>
+                                <code>
+                                    ]
+                                </code>
+                            </li>
+                            <li>
+                                <code>
+                                    }
+                                </code>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <footer>
+            <span>
+                ● Online
+            </span>
+            <span>
+                ⌘ Console
+            </span>
+            <span>
+                PandaLab v1.0
+            </span>
+        </footer>
+    </main>
+    <script>
+        const sendButton = document.getElementById('sendButton');
+        const codePanel = document.getElementById('codePanel');
+        sendButton.addEventListener('click', () => {
+            sendButton.firstChild.textContent = 'Sending… ';
+            codePanel.classList.add('loading');
+            setTimeout(() => {
+                sendButton.firstChild.textContent = 'Send ';
+                codePanel.classList.remove('loading');
+            }, 850);
+        });
+    </script>
+</body>
+</html>
