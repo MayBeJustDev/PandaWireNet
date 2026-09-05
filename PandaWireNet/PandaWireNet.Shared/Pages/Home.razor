@@ -1,16 +1,9 @@
 ﻿@page "/"
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>
-        PandaLab
-    </title>
+@inject IJSRuntime JSRuntime
 
-</head>
-<body>
-    <main class="app-shell">
+<PageTitle>PandaWire.NET</PageTitle>
+
+    <main class="app-shell theme-@theme">
         <header class="topbar">
             <div class="brand">
                 <div class="panda-mark">
@@ -28,7 +21,7 @@
                     </em>
                 </div>
                 <span>
-                    PandaLab
+                    PandaWire.NET
                 </span>
             </div>
             <nav class="main-nav">
@@ -40,6 +33,14 @@
                 </button>
             </nav>
             <div class="top-actions">
+                <label class="theme-picker">
+                    <span>Theme</span>
+                    <select aria-label="Theme" @bind="theme" @bind:after="SaveThemeAsync">
+                        <option value="light">Light</option>
+                        <option value="dark">Dark</option>
+                        <option value="korean">Korean</option>
+                    </select>
+                </label>
                 <button class="icon-button">
                     ⌕
                 </button>
@@ -180,8 +181,8 @@
                             </option>
                         </select>
                         <input aria-label="Request URL" value="https://api.pandalab.dev/v1/pandas" />
-                        <button class="send-button" id="sendButton">
-                            Send
+                        <button class="send-button" id="sendButton" @onclick="PreviewSendAsync" disabled="@isSending">
+                            @(isSending ? "Sending..." : "Send")
                             <span>
                                 ⌄
                             </span>
@@ -326,7 +327,7 @@
                             ⎘
                         </button>
                     </div>
-                    <div class="code-panel" id="codePanel">
+                    <div class="code-panel @(isSending ? "loading" : null)" id="codePanel" aria-busy="@isSending">
                         <ol>
                             <li>
                                 <code>
@@ -475,21 +476,51 @@
                 ⌘ Console
             </span>
             <span>
-                PandaLab v1.0
+                PandaWire.NET v1.0
             </span>
         </footer>
     </main>
-    <script>
-        const sendButton = document.getElementById('sendButton');
-        const codePanel = document.getElementById('codePanel');
-        sendButton.addEventListener('click', () => {
-            sendButton.firstChild.textContent = 'Sending… ';
-            codePanel.classList.add('loading');
-            setTimeout(() => {
-                sendButton.firstChild.textContent = 'Send ';
-                codePanel.classList.remove('loading');
-            }, 850);
-        });
-    </script>
-</body>
-</html>
+
+@code {
+    private const string ThemeKey = "pandawirenet-theme";
+    private string theme = "light";
+    private bool isSending;
+
+    private async Task PreviewSendAsync()
+    {
+        if (isSending) return;
+        isSending = true;
+        await Task.Delay(850);
+        isSending = false;
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (!firstRender) return;
+
+        try
+        {
+            var savedTheme = await JSRuntime.InvokeAsync<string?>("localStorage.getItem", ThemeKey);
+            theme = savedTheme is "light" or "dark" or "korean" ? savedTheme : "light";
+            StateHasChanged();
+        }
+        catch (JSDisconnectedException) { }
+        catch (JSException)
+        {
+            // Browser storage can be disabled; keep the default theme usable.
+        }
+    }
+
+    private async Task SaveThemeAsync()
+    {
+        try
+        {
+            await JSRuntime.InvokeVoidAsync("localStorage.setItem", ThemeKey, theme);
+        }
+        catch (JSDisconnectedException) { }
+        catch (JSException)
+        {
+            // The selected theme still applies for the current session.
+        }
+    }
+}

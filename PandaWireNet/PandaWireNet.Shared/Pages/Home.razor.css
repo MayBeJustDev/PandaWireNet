@@ -1,20 +1,65 @@
-import "tailwindcss";
+.app-shell {
+    --ink: #22272c;
+    --muted: #616b75;
+    --line: #d7dfe4;
+    --accent: #00786f;
+    --surface: #ffffff;
+    --soft: #edf1f4;
+    --sidebar: #f7f9fa;
+    --selection: #d5eee9;
+    --on-accent: #ffffff;
+    --get: #087943;
+    --post: #1b60bb;
+    --delete: #bd233b;
+    --code-key: #7e39b3;
+    --code-string: #ad3434;
+    --code-number: #1b60bb;
+    --code-bool: #945300;
+    color-scheme: light;
+}
 
-:root {
-    --ink: #202124;
-    --muted: #6b7280;
-    --line: #e5e7eb;
-    --purple: #6552d0
+.app-shell.theme-dark {
+    --ink: #f0f1f2;
+    --muted: #adb2b7;
+    --line: #3c4043;
+    --accent: #ecc979;
+    --surface: #202223;
+    --soft: #292b2d;
+    --sidebar: #1c1d1e;
+    --selection: #353126;
+    --on-accent: #252017;
+    --get: #76d7a2;
+    --post: #8ebcff;
+    --delete: #ff949f;
+    --code-key: #c9a4ef;
+    --code-string: #ff949f;
+    --code-number: #8ebcff;
+    --code-bool: #edc578;
+    color-scheme: dark;
+}
+
+.app-shell.theme-korean {
+    --ink: #1c2d43;
+    --muted: #57687b;
+    --line: #d2dce9;
+    --accent: #b62c44;
+    --surface: #ffffff;
+    --soft: #eaf0f7;
+    --sidebar: #f7f9fc;
+    --selection: #e1edf8;
+    --cobalt: #234c93;
+    --jade: #166b59;
+    --gold: #e3b74b;
 }
 
 * {
     box-sizing: border-box
 }
 
-html, body {
+.app-shell {
     margin: 0;
     min-width: 320px;
-    background: #fff;
+    background: var(--surface);
     color: var(--ink);
     font-family: Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif
 }
@@ -103,12 +148,12 @@ button {
         border: 0;
         background: none;
         font-size: 13px;
-        color: #65676b;
+        color: var(--muted);
         position: relative
     }
 
     .main-nav .nav-active {
-        color: #1d1d1f;
+        color: var(--ink);
         font-weight: 650
     }
 
@@ -116,7 +161,7 @@ button {
             content: "";
             position: absolute;
             height: 2px;
-            background: var(--purple);
+            background: var(--accent);
             left: 0;
             right: 0;
             bottom: 0
@@ -142,7 +187,7 @@ button {
     border: 1px solid var(--line) !important;
     border-radius: 5px;
     padding: 6px 13px;
-    background: white !important;
+    background: var(--surface) !important;
     font-size: 12px;
     font-weight: 600
 }
@@ -151,8 +196,8 @@ button {
     width: 29px;
     height: 29px;
     border-radius: 50%;
-    background: #e8e0ff !important;
-    color: #5b3bbc !important;
+    background: var(--selection) !important;
+    color: var(--accent) !important;
     font-size: 11px;
     font-weight: 700
 }
@@ -166,7 +211,7 @@ button {
 .sidebar {
     flex: 0 0 252px;
     border-right: 1px solid var(--line);
-    background: #fafafa;
+    background: var(--sidebar);
     padding: 15px 10px;
     overflow: auto
 }
@@ -185,10 +230,10 @@ button {
     }
 
     .sidebar-heading small {
-        color: #92949a;
+        color: var(--muted);
         font-size: 9px;
         font-weight: 700;
-        letter-spacing: .08em
+        letter-spacing: 0
     }
 
     .sidebar-heading strong {
@@ -201,8 +246,8 @@ button {
 
 .search {
     height: 31px;
-    border: 1px solid #dedfe2;
-    background: white;
+    border: 1px solid var(--line);
+    background: var(--surface);
     border-radius: 4px;
     display: flex;
     align-items: center;
@@ -212,7 +257,7 @@ button {
 
     .search span {
         font-size: 17px;
-        color: #777
+        color: var(--muted)
     }
 
     .search input {
@@ -236,12 +281,12 @@ button {
         background: none;
         font-size: 11px;
         padding: 8px 0;
-        color: #777;
+        color: var(--muted);
         position: relative
     }
 
     .side-tabs .active {
-        color: #262626;
+        color: var(--ink);
         font-weight: 650
     }
 
@@ -251,7 +296,7 @@ button {
             left: 0;
             right: 0;
             height: 2px;
-            background: var(--purple);
+            background: var(--accent);
             bottom: -1px
         }
 
@@ -271,7 +316,7 @@ button {
         margin-left: auto;
         border: 0;
         background: none;
-        color: #777
+        color: var(--muted)
     }
 
 .request {
@@ -289,23 +334,23 @@ button {
 }
 
     .request.active, .request:hover {
-        background: #ececef
+        background: var(--selection)
     }
 
 .get {
-    color: #078355 !important;
+    color: var(--get) !important;
     font-size: 9px;
     font-weight: 800
 }
 
 .post {
-    color: #b66b00;
+    color: var(--post);
     font-size: 9px;
     font-weight: 800
 }
 
 .del {
-    color: #dc3f46;
+    color: var(--delete);
     font-size: 9px;
     font-weight: 800
 }
@@ -313,12 +358,13 @@ button {
 .new-collection {
     border: 0;
     background: none;
-    color: #666;
+    color: var(--muted);
     font-size: 11px;
     padding: 16px 7px
 }
 
 .content {
+    padding-top: 0;
     min-width: 0;
     flex: 1;
     display: grid;
@@ -329,7 +375,7 @@ button {
     border-bottom: 1px solid var(--line);
     display: flex;
     align-items: center;
-    background: #fafafa;
+    background: var(--soft);
     font-size: 11px
 }
 
@@ -338,15 +384,15 @@ button {
     display: flex;
     align-items: center;
     gap: 7px;
-    background: #fff;
+    background: var(--surface);
     border-right: 1px solid var(--line);
     padding: 0 15px;
-    border-top: 2px solid var(--purple)
+    border-top: 2px solid var(--accent)
 }
 
     .request-file i {
         font-style: normal;
-        color: #999;
+        color: var(--muted);
         margin-left: 15px
     }
 
@@ -358,7 +404,7 @@ button {
 .environment {
     margin-left: auto;
     margin-right: 17px;
-    color: #666
+    color: var(--muted)
 }
 
 .request-area {
@@ -379,7 +425,7 @@ button {
 
     .request-title p {
         font-size: 10px;
-        color: #8a8c91;
+        color: var(--muted);
         margin: 0
     }
 
@@ -395,20 +441,20 @@ button {
 }
 
     .url-row select, .url-row input, .url-row button {
-        border: 1px solid #d9dadd
+        border: 1px solid var(--line)
     }
 
 .method {
     width: 92px;
     border-radius: 5px 0 0 5px;
-    background: #fff;
+    background: var(--surface);
     padding: 0 10px;
     font-size: 11px;
     font-weight: 800
 }
 
     .method.get {
-        color: #078355
+        color: var(--get)
     }
 
 .url-row input {
@@ -422,28 +468,28 @@ button {
 }
 
     .url-row input:focus {
-        border-color: #8c7be5
+        border-color: var(--accent)
     }
 
 .send-button {
     min-width: 105px;
     border: 0 !important;
-    background: var(--purple) !important;
-    color: white !important;
+    background: var(--accent) !important;
+    color: var(--on-accent) !important;
     font-weight: 650;
     font-size: 12px
 }
 
     .send-button span {
         float: right;
-        border-left: 1px solid #8878df;
+        border-left: 1px solid var(--line);
         padding-left: 9px
     }
 
 .save-button {
     margin-left: 8px;
     border-radius: 5px;
-    background: white;
+    background: var(--surface);
     width: 65px;
     font-size: 11px;
     font-weight: 600
@@ -459,7 +505,7 @@ button {
     .tabs button, .response-top button, .response-tabs button {
         border: 0;
         background: none;
-        color: #676a70;
+        color: var(--muted);
         font-size: 10px;
         padding: 10px 0;
         position: relative;
@@ -467,14 +513,14 @@ button {
     }
 
     .tabs .active, .response-top .active, .response-tabs .active {
-        color: #202124;
+        color: var(--ink);
         font-weight: 650
     }
 
         .tabs .active:after, .response-tabs .active:after {
             content: "";
             height: 2px;
-            background: var(--purple);
+            background: var(--accent);
             position: absolute;
             bottom: -1px;
             left: 0;
@@ -493,7 +539,7 @@ button {
         border: 0;
         background: none;
         font-size: 10px;
-        color: #686b70
+        color: var(--muted)
     }
 
 .table-head, .table-row {
@@ -506,8 +552,8 @@ button {
 }
 
 .table-head {
-    background: #fafafa;
-    color: #81848b;
+    background: var(--soft);
+    color: var(--muted);
     font-size: 9px;
     font-weight: 650
 }
@@ -531,7 +577,7 @@ button {
         }
 
     .table-row.muted {
-        color: #aaa
+        color: var(--muted)
     }
 
 .body-editor {
@@ -539,12 +585,12 @@ button {
     border: 1px solid var(--line);
     padding: 14px;
     font: 11px/1.7 ui-monospace,monospace;
-    color: #4935a3;
-    background: #fcfcfd
+    color: var(--code-key);
+    background: var(--soft)
 }
 
 .response-area {
-    border-top: 1px solid #d8d9dc;
+    border-top: 1px solid var(--line);
     padding: 0 22px;
     min-height: 0;
     overflow: hidden;
@@ -567,7 +613,7 @@ button {
 
 .response-meta {
     font-size: 10px;
-    color: #5c5f65;
+    color: var(--muted);
     display: flex;
     gap: 8px;
     align-items: center
@@ -577,7 +623,7 @@ button {
     width: 6px;
     height: 6px;
     border-radius: 50%;
-    background: #17a672
+    background: var(--get)
 }
 
 .response-tabs {
@@ -595,7 +641,7 @@ button {
     .response-tabs select {
         border: 0;
         background: none;
-        color: #555;
+        color: var(--muted);
         font-size: 10px
     }
 
@@ -603,7 +649,7 @@ button {
     flex: 1;
     min-height: 0;
     overflow: auto;
-    background: #fbfbfc;
+    background: var(--soft);
     margin-top: 10px;
     border-radius: 3px;
     padding: 10px 0;
@@ -617,42 +663,42 @@ button {
     .code-panel ol {
         margin: 0;
         padding-left: 45px;
-        color: #b4b7bd;
+        color: var(--muted);
         font: 11px/1.75 ui-monospace,monospace
     }
 
     .code-panel code {
-        color: #36383d;
+        color: var(--ink);
         padding-left: 8px
     }
 
 .key {
-    color: #7450a8
+    color: var(--code-key)
 }
 
 .string {
-    color: #b04444
+    color: var(--code-string)
 }
 
 .number {
-    color: #1868b7
+    color: var(--code-number)
 }
 
 .bool {
-    color: #b25e13
+    color: var(--code-bool)
 }
 
 footer {
     height: 24px;
     flex: none;
     border-top: 1px solid var(--line);
-    background: #fafafa;
+    background: var(--soft);
     display: flex;
     align-items: center;
     gap: 20px;
     padding: 0 12px;
     font-size: 9px;
-    color: #6b6e74
+    color: var(--muted)
 }
 
     footer span:last-child {
@@ -660,10 +706,10 @@ footer {
     }
 
     footer span:first-child {
-        color: #14865e
+        color: var(--get)
     }
 
-@@media(max-width:760px) {
+@media(max-width:760px) {
     .sidebar, .main-nav {
         display: none
     }
@@ -728,5 +774,131 @@ footer {
 
     .invite-button {
         display: none
+    }
+}
+
+.theme-picker {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0;
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.theme-picker select {
+    width: 112px;
+    min-height: 34px;
+    padding: 6px 8px;
+    border: 1px solid var(--line);
+    border-radius: 5px;
+    background: var(--surface);
+    color: var(--ink);
+    cursor: pointer;
+}
+
+input, select, option {
+    background-color: var(--surface);
+    color: var(--ink);
+}
+
+input::placeholder {
+    color: var(--muted);
+    opacity: 1;
+}
+
+input[type="checkbox"] {
+    accent-color: var(--accent);
+}
+
+button:focus-visible, input:focus-visible, select:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}
+
+.theme-korean .topbar {
+    position: relative;
+}
+
+.theme-korean .topbar::after {
+    content: "";
+    position: absolute;
+    inset: auto 0 0;
+    height: 3px;
+    background: linear-gradient(90deg,
+        #bd3950 0 20%, #234c93 20% 40%, #e3b74b 40% 60%,
+        #26816d 60% 80%, #344154 80%);
+}
+
+.theme-korean .brand,
+.theme-korean .main-nav .nav-active {
+    color: var(--cobalt);
+}
+
+.theme-korean .sidebar {
+    border-left: 4px solid var(--cobalt);
+}
+
+.theme-korean .sidebar-heading small,
+.theme-korean .collection-title {
+    color: var(--jade);
+}
+
+.theme-korean .request-file {
+    background: var(--soft);
+    border-top-color: var(--cobalt);
+}
+
+.theme-korean .request.active {
+    box-shadow: inset 3px 0 var(--cobalt);
+}
+
+.theme-korean .theme-picker select {
+    border-left: 3px solid var(--cobalt);
+}
+
+.theme-korean .response-top {
+    border-bottom: 1px solid var(--line);
+}
+
+.theme-korean .response-top .active {
+    color: var(--cobalt);
+}
+
+@media (max-width: 960px) {
+    .topbar {
+        gap: 16px;
+    }
+
+    .main-nav {
+        gap: 12px;
+    }
+
+    .top-actions .icon-button,
+    .top-actions .invite-button {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .topbar {
+        height: auto;
+        min-height: 54px;
+        flex-wrap: wrap;
+        gap: 10px;
+        padding: 10px 12px;
+    }
+
+    .top-actions {
+        flex-wrap: wrap;
+    }
+
+    .theme-picker {
+        gap: 6px;
+    }
+
+    .top-actions .avatar {
+        display: none;
     }
 }
